@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallshoplicenseMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallshoplicense" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shopId" property="shopid" jdbcType="BIGINT" />
+    <result column="licenseType" property="licensetype" jdbcType="INTEGER" />
+    <result column="licenseUrl" property="licenseurl" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shopId, licenseType, licenseUrl, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallShopLicense
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallShopLicense
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallshoplicense" >
+    insert into mallShopLicense (id, shopId, licenseType, 
+      licenseUrl, createTime)
+    values (#{id,jdbcType=BIGINT}, #{shopid,jdbcType=BIGINT}, #{licensetype,jdbcType=INTEGER}, 
+      #{licenseurl,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallshoplicense" >
+    insert into mallShopLicense
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopid != null" >
+        shopId,
+      </if>
+      <if test="licensetype != null" >
+        licenseType,
+      </if>
+      <if test="licenseurl != null" >
+        licenseUrl,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="licensetype != null" >
+        #{licensetype,jdbcType=INTEGER},
+      </if>
+      <if test="licenseurl != null" >
+        #{licenseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallshoplicense" >
+    update mallShopLicense
+    <set >
+      <if test="shopid != null" >
+        shopId = #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="licensetype != null" >
+        licenseType = #{licensetype,jdbcType=INTEGER},
+      </if>
+      <if test="licenseurl != null" >
+        licenseUrl = #{licenseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallshoplicense" >
+    update mallShopLicense
+    set shopId = #{shopid,jdbcType=BIGINT},
+      licenseType = #{licensetype,jdbcType=INTEGER},
+      licenseUrl = #{licenseurl,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallorderdetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallorderdetails" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="relationId" property="relationid" jdbcType="BIGINT" />
+    <result column="shopId" property="shopid" jdbcType="BIGINT" />
+    <result column="relationType" property="relationtype" jdbcType="INTEGER" />
+    <result column="standardPrice" property="standardprice" jdbcType="INTEGER" />
+    <result column="salePrice" property="saleprice" jdbcType="INTEGER" />
+    <result column="costPrice" property="costprice" jdbcType="INTEGER" />
+    <result column="trafficPrice" property="trafficprice" jdbcType="INTEGER" />
+    <result column="payPrice" property="payprice" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, relationId, shopId, relationType, standardPrice, salePrice, costPrice, trafficPrice, 
+    payPrice, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallOrderDetails
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallOrderDetails
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallorderdetails" >
+    insert into mallOrderDetails (id, relationId, shopId, 
+      relationType, standardPrice, salePrice, 
+      costPrice, trafficPrice, payPrice, 
+      createTime)
+    values (#{id,jdbcType=BIGINT}, #{relationid,jdbcType=BIGINT}, #{shopid,jdbcType=BIGINT}, 
+      #{relationtype,jdbcType=INTEGER}, #{standardprice,jdbcType=INTEGER}, #{saleprice,jdbcType=INTEGER}, 
+      #{costprice,jdbcType=INTEGER}, #{trafficprice,jdbcType=INTEGER}, #{payprice,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallorderdetails" >
+    insert into mallOrderDetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="relationid != null" >
+        relationId,
+      </if>
+      <if test="shopid != null" >
+        shopId,
+      </if>
+      <if test="relationtype != null" >
+        relationType,
+      </if>
+      <if test="standardprice != null" >
+        standardPrice,
+      </if>
+      <if test="saleprice != null" >
+        salePrice,
+      </if>
+      <if test="costprice != null" >
+        costPrice,
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice,
+      </if>
+      <if test="payprice != null" >
+        payPrice,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="relationid != null" >
+        #{relationid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="relationtype != null" >
+        #{relationtype,jdbcType=INTEGER},
+      </if>
+      <if test="standardprice != null" >
+        #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="trafficprice != null" >
+        #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        #{payprice,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallorderdetails" >
+    update mallOrderDetails
+    <set >
+      <if test="relationid != null" >
+        relationId = #{relationid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        shopId = #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="relationtype != null" >
+        relationType = #{relationtype,jdbcType=INTEGER},
+      </if>
+      <if test="standardprice != null" >
+        standardPrice = #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        salePrice = #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        costPrice = #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        payPrice = #{payprice,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallorderdetails" >
+    update mallOrderDetails
+    set relationId = #{relationid,jdbcType=BIGINT},
+      shopId = #{shopid,jdbcType=BIGINT},
+      relationType = #{relationtype,jdbcType=INTEGER},
+      standardPrice = #{standardprice,jdbcType=INTEGER},
+      salePrice = #{saleprice,jdbcType=INTEGER},
+      costPrice = #{costprice,jdbcType=INTEGER},
+      trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      payPrice = #{payprice,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

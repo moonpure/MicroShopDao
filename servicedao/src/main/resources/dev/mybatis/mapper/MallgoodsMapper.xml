@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallgoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallgoods" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="brandName" property="brandname" jdbcType="VARCHAR" />
+    <result column="firstCategory" property="firstcategory" jdbcType="INTEGER" />
+    <result column="secondCategory" property="secondcategory" jdbcType="INTEGER" />
+    <result column="thirdCategory" property="thirdcategory" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="standardPrice" property="standardprice" jdbcType="INTEGER" />
+    <result column="salePrice" property="saleprice" jdbcType="INTEGER" />
+    <result column="costPrice" property="costprice" jdbcType="INTEGER" />
+    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+    <result column="logoUrl" property="logourl" jdbcType="VARCHAR" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, brandName, firstCategory, secondCategory, thirdCategory, title, standardPrice, 
+    salePrice, costPrice, keywords, logoUrl, describe, state, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallGoods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallGoods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallgoods" >
+    insert into mallGoods (id, name, brandName, 
+      firstCategory, secondCategory, thirdCategory, 
+      title, standardPrice, salePrice, 
+      costPrice, keywords, logoUrl, 
+      describe, state, createTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{brandname,jdbcType=VARCHAR}, 
+      #{firstcategory,jdbcType=INTEGER}, #{secondcategory,jdbcType=INTEGER}, #{thirdcategory,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{standardprice,jdbcType=INTEGER}, #{saleprice,jdbcType=INTEGER}, 
+      #{costprice,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}, #{logourl,jdbcType=VARCHAR}, 
+      #{describe,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallgoods" >
+    insert into mallGoods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="brandname != null" >
+        brandName,
+      </if>
+      <if test="firstcategory != null" >
+        firstCategory,
+      </if>
+      <if test="secondcategory != null" >
+        secondCategory,
+      </if>
+      <if test="thirdcategory != null" >
+        thirdCategory,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="standardprice != null" >
+        standardPrice,
+      </if>
+      <if test="saleprice != null" >
+        salePrice,
+      </if>
+      <if test="costprice != null" >
+        costPrice,
+      </if>
+      <if test="keywords != null" >
+        keywords,
+      </if>
+      <if test="logourl != null" >
+        logoUrl,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="firstcategory != null" >
+        #{firstcategory,jdbcType=INTEGER},
+      </if>
+      <if test="secondcategory != null" >
+        #{secondcategory,jdbcType=INTEGER},
+      </if>
+      <if test="thirdcategory != null" >
+        #{thirdcategory,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="logourl != null" >
+        #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallgoods" >
+    update mallGoods
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brandname != null" >
+        brandName = #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="firstcategory != null" >
+        firstCategory = #{firstcategory,jdbcType=INTEGER},
+      </if>
+      <if test="secondcategory != null" >
+        secondCategory = #{secondcategory,jdbcType=INTEGER},
+      </if>
+      <if test="thirdcategory != null" >
+        thirdCategory = #{thirdcategory,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        standardPrice = #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        salePrice = #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        costPrice = #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null" >
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="logourl != null" >
+        logoUrl = #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallgoods" >
+    update mallGoods
+    set name = #{name,jdbcType=VARCHAR},
+      brandName = #{brandname,jdbcType=VARCHAR},
+      firstCategory = #{firstcategory,jdbcType=INTEGER},
+      secondCategory = #{secondcategory,jdbcType=INTEGER},
+      thirdCategory = #{thirdcategory,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      standardPrice = #{standardprice,jdbcType=INTEGER},
+      salePrice = #{saleprice,jdbcType=INTEGER},
+      costPrice = #{costprice,jdbcType=INTEGER},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      logoUrl = #{logourl,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

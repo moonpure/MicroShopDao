@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallshopMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallshop" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="logourl" property="logourl" jdbcType="VARCHAR" />
+    <result column="contactName" property="contactname" jdbcType="VARCHAR" />
+    <result column="contactPhone" property="contactphone" jdbcType="VARCHAR" />
+    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+    <result column="areaId" property="areaid" jdbcType="INTEGER" />
+    <result column="loginId" property="loginid" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="openTime" property="opentime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, logourl, contactName, contactPhone, provinceId, cityId, areaId, loginId, 
+    userId, openTime, state, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallShop
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallShop
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallshop" >
+    insert into mallShop (id, name, logourl, 
+      contactName, contactPhone, provinceId, 
+      cityId, areaId, loginId, 
+      userId, openTime, state, 
+      createTime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{logourl,jdbcType=VARCHAR}, 
+      #{contactname,jdbcType=VARCHAR}, #{contactphone,jdbcType=VARCHAR}, #{provinceid,jdbcType=INTEGER}, 
+      #{cityid,jdbcType=INTEGER}, #{areaid,jdbcType=INTEGER}, #{loginid,jdbcType=BIGINT}, 
+      #{userid,jdbcType=BIGINT}, #{opentime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallshop" >
+    insert into mallShop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="logourl != null" >
+        logourl,
+      </if>
+      <if test="contactname != null" >
+        contactName,
+      </if>
+      <if test="contactphone != null" >
+        contactPhone,
+      </if>
+      <if test="provinceid != null" >
+        provinceId,
+      </if>
+      <if test="cityid != null" >
+        cityId,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="loginid != null" >
+        loginId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="opentime != null" >
+        openTime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logourl != null" >
+        #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="loginid != null" >
+        #{loginid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallshop" >
+    update mallShop
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logourl != null" >
+        logourl = #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        contactName = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        contactPhone = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        provinceId = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="loginid != null" >
+        loginId = #{loginid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="opentime != null" >
+        openTime = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallshop" >
+    update mallShop
+    set name = #{name,jdbcType=VARCHAR},
+      logourl = #{logourl,jdbcType=VARCHAR},
+      contactName = #{contactname,jdbcType=VARCHAR},
+      contactPhone = #{contactphone,jdbcType=VARCHAR},
+      provinceId = #{provinceid,jdbcType=INTEGER},
+      cityId = #{cityid,jdbcType=INTEGER},
+      areaId = #{areaid,jdbcType=INTEGER},
+      loginId = #{loginid,jdbcType=BIGINT},
+      userId = #{userid,jdbcType=BIGINT},
+      openTime = #{opentime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallorderpaylogMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallorderpaylog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="orderId" property="orderid" jdbcType="BIGINT" />
+    <result column="shopId" property="shopid" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="payType" property="paytype" jdbcType="INTEGER" />
+    <result column="flowNumber" property="flownumber" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="success" property="success" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderId, shopId, userId, payType, flowNumber, createTime, success
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallOrderPayLog
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallOrderPayLog
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallorderpaylog" >
+    insert into mallOrderPayLog (id, orderId, shopId, 
+      userId, payType, flowNumber, 
+      createTime, success)
+    values (#{id,jdbcType=BIGINT}, #{orderid,jdbcType=BIGINT}, #{shopid,jdbcType=BIGINT}, 
+      #{userid,jdbcType=BIGINT}, #{paytype,jdbcType=INTEGER}, #{flownumber,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{success,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallorderpaylog" >
+    insert into mallOrderPayLog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderid != null" >
+        orderId,
+      </if>
+      <if test="shopid != null" >
+        shopId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="paytype != null" >
+        payType,
+      </if>
+      <if test="flownumber != null" >
+        flowNumber,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="success != null" >
+        success,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="flownumber != null" >
+        #{flownumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="success != null" >
+        #{success,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallorderpaylog" >
+    update mallOrderPayLog
+    <set >
+      <if test="orderid != null" >
+        orderId = #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        shopId = #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="paytype != null" >
+        payType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="flownumber != null" >
+        flowNumber = #{flownumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="success != null" >
+        success = #{success,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallorderpaylog" >
+    update mallOrderPayLog
+    set orderId = #{orderid,jdbcType=BIGINT},
+      shopId = #{shopid,jdbcType=BIGINT},
+      userId = #{userid,jdbcType=BIGINT},
+      payType = #{paytype,jdbcType=INTEGER},
+      flowNumber = #{flownumber,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      success = #{success,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

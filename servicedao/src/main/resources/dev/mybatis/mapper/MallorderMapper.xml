@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallorderMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallorder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="orderNumber" property="ordernumber" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="targetId" property="targetid" jdbcType="BIGINT" />
+    <result column="targetName" property="targetname" jdbcType="VARCHAR" />
+    <result column="targetPhone" property="targetphone" jdbcType="VARCHAR" />
+    <result column="standardPrice" property="standardprice" jdbcType="INTEGER" />
+    <result column="salePrice" property="saleprice" jdbcType="INTEGER" />
+    <result column="costPrice" property="costprice" jdbcType="INTEGER" />
+    <result column="trafficPrice" property="trafficprice" jdbcType="INTEGER" />
+    <result column="payPrice" property="payprice" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="upTime" property="uptime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderNumber, userId, targetId, targetName, targetPhone, standardPrice, salePrice, 
+    costPrice, trafficPrice, payPrice, state, createTime, upTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.microshop.servicedao.model.MallorderKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallOrder
+    where id = #{id,jdbcType=BIGINT}
+      and orderNumber = #{ordernumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.microshop.servicedao.model.MallorderKey" >
+    delete from mallOrder
+    where id = #{id,jdbcType=BIGINT}
+      and orderNumber = #{ordernumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallorder" >
+    insert into mallOrder (id, orderNumber, userId, 
+      targetId, targetName, targetPhone, 
+      standardPrice, salePrice, costPrice, 
+      trafficPrice, payPrice, state, 
+      createTime, upTime)
+    values (#{id,jdbcType=BIGINT}, #{ordernumber,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT}, 
+      #{targetid,jdbcType=BIGINT}, #{targetname,jdbcType=VARCHAR}, #{targetphone,jdbcType=VARCHAR}, 
+      #{standardprice,jdbcType=INTEGER}, #{saleprice,jdbcType=INTEGER}, #{costprice,jdbcType=INTEGER}, 
+      #{trafficprice,jdbcType=INTEGER}, #{payprice,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{uptime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallorder" >
+    insert into mallOrder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordernumber != null" >
+        orderNumber,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="targetid != null" >
+        targetId,
+      </if>
+      <if test="targetname != null" >
+        targetName,
+      </if>
+      <if test="targetphone != null" >
+        targetPhone,
+      </if>
+      <if test="standardprice != null" >
+        standardPrice,
+      </if>
+      <if test="saleprice != null" >
+        salePrice,
+      </if>
+      <if test="costprice != null" >
+        costPrice,
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice,
+      </if>
+      <if test="payprice != null" >
+        payPrice,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="uptime != null" >
+        upTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ordernumber != null" >
+        #{ordernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="targetid != null" >
+        #{targetid,jdbcType=BIGINT},
+      </if>
+      <if test="targetname != null" >
+        #{targetname,jdbcType=VARCHAR},
+      </if>
+      <if test="targetphone != null" >
+        #{targetphone,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="trafficprice != null" >
+        #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        #{payprice,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptime != null" >
+        #{uptime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallorder" >
+    update mallOrder
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="targetid != null" >
+        targetId = #{targetid,jdbcType=BIGINT},
+      </if>
+      <if test="targetname != null" >
+        targetName = #{targetname,jdbcType=VARCHAR},
+      </if>
+      <if test="targetphone != null" >
+        targetPhone = #{targetphone,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        standardPrice = #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        salePrice = #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        costPrice = #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        payPrice = #{payprice,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptime != null" >
+        upTime = #{uptime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and orderNumber = #{ordernumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallorder" >
+    update mallOrder
+    set userId = #{userid,jdbcType=BIGINT},
+      targetId = #{targetid,jdbcType=BIGINT},
+      targetName = #{targetname,jdbcType=VARCHAR},
+      targetPhone = #{targetphone,jdbcType=VARCHAR},
+      standardPrice = #{standardprice,jdbcType=INTEGER},
+      salePrice = #{saleprice,jdbcType=INTEGER},
+      costPrice = #{costprice,jdbcType=INTEGER},
+      trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      payPrice = #{payprice,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      upTime = #{uptime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+      and orderNumber = #{ordernumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

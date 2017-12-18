@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microshop.dao</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0</version>
+<modules>
+    <module>servicedao</module>
+    <module>serviceeurek</module>
+</modules>
+   <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven.config.dir>dev</maven.config.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <maven.config.dir>pro</maven.config.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <maven.config.dir>test</maven.config.dir>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

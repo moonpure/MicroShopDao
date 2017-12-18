@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallbannerMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallbanner" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pictureUrl" property="pictureurl" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="timeLength" property="timelength" jdbcType="INTEGER" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="stopTime" property="stoptime" jdbcType="TIMESTAMP" />
+    <result column="bannerType" property="bannertype" jdbcType="INTEGER" />
+    <result column="targetUrl" property="targeturl" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, pictureUrl, sort, timeLength, startTime, stopTime, bannerType, targetUrl, 
+    state, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultType="com.microshop.servicedao.model.Mallbanner" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List"></include>
+    from mallBanner
+    where id = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mallBanner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallbanner" >
+    insert into mallBanner (id, name, pictureUrl, 
+      sort, timeLength, startTime, 
+      stopTime, bannerType, targetUrl, 
+      state, createTime)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pictureurl,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{timelength,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{stoptime,jdbcType=TIMESTAMP}, #{bannertype,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallbanner" >
+    insert into mallBanner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pictureurl != null" >
+        pictureUrl,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="timelength != null" >
+        timeLength,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="stoptime != null" >
+        stopTime,
+      </if>
+      <if test="bannertype != null" >
+        bannerType,
+      </if>
+      <if test="targeturl != null" >
+        targetUrl,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null" >
+        #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="timelength != null" >
+        #{timelength,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stoptime != null" >
+        #{stoptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bannertype != null" >
+        #{bannertype,jdbcType=INTEGER},
+      </if>
+      <if test="targeturl != null" >
+        #{targeturl,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallbanner" >
+    update mallBanner
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null" >
+        pictureUrl = #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="timelength != null" >
+        timeLength = #{timelength,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stoptime != null" >
+        stopTime = #{stoptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bannertype != null" >
+        bannerType = #{bannertype,jdbcType=INTEGER},
+      </if>
+      <if test="targeturl != null" >
+        targetUrl = #{targeturl,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallbanner" >
+    update mallBanner
+    set name = #{name,jdbcType=VARCHAR},
+      pictureUrl = #{pictureurl,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      timeLength = #{timelength,jdbcType=INTEGER},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      stopTime = #{stoptime,jdbcType=TIMESTAMP},
+      bannerType = #{bannertype,jdbcType=INTEGER},
+      targetUrl = #{targeturl,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

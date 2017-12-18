@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.microshop.servicedao.mapper.MallgoodskindMapper" >
+  <resultMap id="BaseResultMap" type="com.microshop.servicedao.model.Mallgoodskind" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sku" property="sku" jdbcType="VARCHAR" />
+    <result column="goodsId" property="goodsid" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="standardPrice" property="standardprice" jdbcType="INTEGER" />
+    <result column="salePrice" property="saleprice" jdbcType="INTEGER" />
+    <result column="costPrice" property="costprice" jdbcType="INTEGER" />
+    <result column="barCode" property="barcode" jdbcType="VARCHAR" />
+    <result column="trafficPrice" property="trafficprice" jdbcType="INTEGER" />
+    <result column="trafficType" property="traffictype" jdbcType="INTEGER" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sku, goodsId, name, standardPrice, salePrice, costPrice, barCode, trafficPrice, 
+    trafficType, stock, version, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mallGoodsKind
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mallGoodsKind
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.microshop.servicedao.model.Mallgoodskind" >
+    insert into mallGoodsKind (id, sku, goodsId, 
+      name, standardPrice, salePrice, 
+      costPrice, barCode, trafficPrice, 
+      trafficType, stock, version, 
+      createTime)
+    values (#{id,jdbcType=BIGINT}, #{sku,jdbcType=VARCHAR}, #{goodsid,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{standardprice,jdbcType=INTEGER}, #{saleprice,jdbcType=INTEGER}, 
+      #{costprice,jdbcType=INTEGER}, #{barcode,jdbcType=VARCHAR}, #{trafficprice,jdbcType=INTEGER}, 
+      #{traffictype,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.microshop.servicedao.model.Mallgoodskind" >
+    insert into mallGoodsKind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sku != null" >
+        sku,
+      </if>
+      <if test="goodsid != null" >
+        goodsId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="standardprice != null" >
+        standardPrice,
+      </if>
+      <if test="saleprice != null" >
+        salePrice,
+      </if>
+      <if test="costprice != null" >
+        costPrice,
+      </if>
+      <if test="barcode != null" >
+        barCode,
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice,
+      </if>
+      <if test="traffictype != null" >
+        trafficType,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficprice != null" >
+        #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="traffictype != null" >
+        #{traffictype,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.microshop.servicedao.model.Mallgoodskind" >
+    update mallGoodsKind
+    <set >
+      <if test="sku != null" >
+        sku = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        goodsId = #{goodsid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="standardprice != null" >
+        standardPrice = #{standardprice,jdbcType=INTEGER},
+      </if>
+      <if test="saleprice != null" >
+        salePrice = #{saleprice,jdbcType=INTEGER},
+      </if>
+      <if test="costprice != null" >
+        costPrice = #{costprice,jdbcType=INTEGER},
+      </if>
+      <if test="barcode != null" >
+        barCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficprice != null" >
+        trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      </if>
+      <if test="traffictype != null" >
+        trafficType = #{traffictype,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.microshop.servicedao.model.Mallgoodskind" >
+    update mallGoodsKind
+    set sku = #{sku,jdbcType=VARCHAR},
+      goodsId = #{goodsid,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      standardPrice = #{standardprice,jdbcType=INTEGER},
+      salePrice = #{saleprice,jdbcType=INTEGER},
+      costPrice = #{costprice,jdbcType=INTEGER},
+      barCode = #{barcode,jdbcType=VARCHAR},
+      trafficPrice = #{trafficprice,jdbcType=INTEGER},
+      trafficType = #{traffictype,jdbcType=INTEGER},
+      stock = #{stock,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,31 @@
+server:
+  port: 8330
+spring:
+  application:
+    name: mysqlservice  #全部小写
+#####################################################################################################
+# mysql 属性配置
+  datasource:
+    #type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/smallestore?useSSL=false
+    username: root
+    password: Admin_409012
+# mybatis mapper xml 配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka/
+mybatis:
+  # mybatis.type-aliases-package：指定domain类的基包，即指定其在*Mapper.xml文件中可以使用简名来代替全类名（看后边的UserMapper.xml介绍）
+  #type-aliases-package: com.microshop.servicedao.mapper
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+#####################################################################################################
+
+
+
+
+
+
+
