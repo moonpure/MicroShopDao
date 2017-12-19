@@ -101,19 +101,16 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>mallservicedao</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
 				<excludes>
 					<exclude>dev/*</exclude>
-					<exclude>dev/mybatis/*</exclude>
-					<exclude>dev/mybatis/mapper/*</exclude>
+					<!--<exclude>mybatis/*</exclude>-->
+					<!--<exclude>mybatis/mapper/*</exclude>-->
 					<exclude>test/*</exclude>
-					<exclude>test/mybatis/*</exclude>
-					<exclude>test/mybatis/mapper/*</exclude>
 					<exclude>pro/*</exclude>
-					<exclude>pro/mybatis/*</exclude>
-					<exclude>pro/mybatis/mapper/*</exclude>
 				</excludes>
 				<filtering>true</filtering>
 			</resource>
@@ -121,8 +118,8 @@
 				<directory>src/main/resources/${maven.config.dir}</directory>
 				<includes>
 					<include>*.yml</include>
-					<include>mybatis/mapper/*.xml</include>
-					<include>mybatis/*.xml</include>
+					<!--<include>mybatis/mapper/*.xml</include>-->
+					<!--<include>mybatis/*.xml</include>-->
 				</includes>
 				<filtering>true</filtering>
 			</resource>
