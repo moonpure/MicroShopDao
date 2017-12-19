@@ -8,14 +8,14 @@ spring:
   datasource:
     #type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/smallestore?useSSL=false
-    username: root
-    password: Admin_409012
+    url: jdbc:mysql://192.168.63.125:3306/mall?useSSL=false
+    username: tradewrite
+    password: tradewrite
 # mybatis mapper xml 配置
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8880/eureka/
+      defaultZone: http://192.168.62.204:8880/eureka/
 mybatis:
   # mybatis.type-aliases-package：指定domain类的基包，即指定其在*Mapper.xml文件中可以使用简名来代替全类名（看后边的UserMapper.xml介绍）
   #type-aliases-package: com.microshop.servicedao.mapper
