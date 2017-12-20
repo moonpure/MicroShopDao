@@ -7,6 +7,7 @@ public class Mallbanner {
 
     private String name;
 
+    //banner url
     private String pictureurl;
 
     private Integer sort;
