@@ -5,6 +5,7 @@ import java.util.Date;
 public class Mallbanner {
     private Integer id;
 
+    //banner 名称
     private String name;
 
     //banner url
